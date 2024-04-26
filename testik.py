@@ -109,7 +109,7 @@ class BranchListDialog(QDialog):
         self.edit_branch_button.setEnabled(False)
         self.edit_branch_button.clicked.connect(self.edit_branch)
 
-        self.delete_branch_button = QPushButton('Удалить филиал')  # Новое: Кнопка удаления филиала
+        self.delete_branch_button = QPushButton('Удалить филиал')
         self.delete_branch_button.setEnabled(False)
         self.delete_branch_button.clicked.connect(self.delete_branch)
 
@@ -120,7 +120,7 @@ class BranchListDialog(QDialog):
         layout.addWidget(self.delete_branch_button) 
         self.setLayout(layout)
         finished = QtCore.pyqtSignal()
-        self.load_branches()  # вызываем без аргументов
+        self.load_branches()
 
     def load_branches(self):
         connection = sqlite3.connect('AbelyashevTest.db')
@@ -404,7 +404,7 @@ class MainWindow(QMainWindow):
         self.branch_button = QPushButton('Список филиалов')
         self.branch_button.clicked.connect(self.open_branch_list_dialog)
 
-        self.delete_employee_button = QPushButton('Удалить сотрудника')  # Новое: Кнопка удаления филиала
+        self.delete_employee_button = QPushButton('Удалить сотрудника')
         self.delete_employee_button.setEnabled(False)
         self.delete_employee_button.clicked.connect(self.delete_employee)
 
@@ -545,7 +545,7 @@ class MainWindow(QMainWindow):
         ''')
         employees = cursor.fetchall()
         connection.close()
-        self.employee_list_widget.clear()  # Перемещаем очистку списка в начало метода
+        self.employee_list_widget.clear()
         if employees:
             for employee_id, name, surname, branch_name, ceo_id in employees:
                 ceo_name = self.get_employee_name_by_id(ceo_id)
@@ -588,7 +588,7 @@ class MainWindow(QMainWindow):
         else:
             self.edit_employee_button.setEnabled(False)
             self.delete_employee_button.setEnabled(False)
-        self.load_branches()  # Добавьте вызов метода load_branches здесь
+        self.load_branches()
 
 
 
